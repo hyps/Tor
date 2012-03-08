@@ -1,0 +1,69 @@
+html,body {
+	background-color: #000;
+	color: #CCC;
+	font-family: helvetica, arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	font-size: 0.9em;
+	line-height: 1.6em;
+}
+
+h4 {
+	margin-bottom: 0px;
+	font-size: 1.2em;
+	margin: 6px 0 6px 0;
+}
+
+p {
+	margin: 6px 0 6px 0;
+}
+
+a {
+	color: #4090CE;
+	text-decoration: none;
+	border-bottom: solid 1px #222;
+}
+
+a:hover {
+	background-color: #FFF7A5;
+	color: #131313;
+	border-bottom: solid 1px #4090CE;
+}
+
+#wrapper {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 640px;
+	height: 500px;
+	margin: auto;
+}
+
+#canvas-bitdungeon {
+	border: 1px solid #555;
+	width: 640px;
+	height: 300px;
+}
+
+#controls {
+	float: left;
+}
+
+#rightcontent {
+	text-align: right;
+}
+
+.controlTable {
+	width: 250px;
+}
+
+.copyright {
+	font-size: 0.85em;
+}
+
+.selected {
+	background-color: #FFF7A5;
+	color: #131313;
+}

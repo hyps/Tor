@@ -1,0 +1,1 @@
+montage -tile 19x -background transparent -geometry +4+0 boom?.gif boom??.gif test.gif 

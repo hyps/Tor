@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8" />
+	
+	<script type="text/javascript" src="js/externals/prototype.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/attack.js"></script>
+	<script type="text/javascript" src="js/render.js"></script>
+	<script type="text/javascript" src="js/input.js"></script>	
+	<script type="text/javascript" src="js/player.js"></script>
+	
+	<meta content="width=device-width, height=device-height" name="viewport"/>
+
+	<style type="text/css">
+		body,html,canvas {margin:0;padding:0;}
+
+		#screen {
+			background:gray;
+			margin:50px auto 0 auto;
+			display:block;
+		}
+
+		#restore {
+			width:800px;
+			height:600px;
+			background:black;
+			opacity:0.5;
+			position:absolute;
+			cursor:pointer;
+		}
+
+			#restore div {
+				color:white;
+				text-align:center;
+				margin:200px auto 0 auto;
+				width:200px;
+			}
+	</style>
+</head>
+
+<body>
+	<canvas id="screen"></canvas>
+	<div id="restore" style="display:none;"><div>Вас подстрелили... Кликните для продолжения.</div></div>
+</body>
+</html>

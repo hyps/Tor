@@ -16,7 +16,7 @@ var LOGIC_Y_MAX = 100;
 
 function toWorldX(logicX)
 {
-	return (CANVAS_WIDTH*(logicX)/LOGIC_X_MAX)/PHYSIC_SCALE
+	return (CANVAS_WIDTH*(logicX)/LOGIC_X_MAX)/PHYSIC_SCALE;
 }
 
 function toWorldY(logicY)
@@ -36,8 +36,7 @@ function toWorldHeight(logicHeight)
 
 function testBox2d()
 {
-
-//	http://blog.sethladd.com/2011/09/box2d-javascript-example-walkthrough.html
+	//	http://blog.sethladd.com/2011/09/box2d-javascript-example-walkthrough.html
 
 	var requestAnimFrame = (function(){
 		return  window.requestAnimationFrame       || 
@@ -65,7 +64,7 @@ function testBox2d()
 	;
 
 	var world = new b2World(
-			new b2Vec2(0, 10)    //gravity
+			new b2Vec2(0, 40)    //gravity
 			,  true                 //allow sleep
 	);
 
@@ -76,14 +75,14 @@ function testBox2d()
 
 	var bodyDef = new b2BodyDef;
 	bodyDef.type = b2Body.b2_staticBody;
-
-//	positions the center of the object (not upper left!)
+	
+	//	positions the center of the object (not upper left!)
 	bodyDef.position.x = toWorldX(50);
-	bodyDef.position.y = toWorldY(50);
+	bodyDef.position.y = toWorldY(2);
 
 	fixDef.shape = new b2PolygonShape;
 
-//	half width, half height.
+	//	half width, half height.
 	fixDef.shape.SetAsBox(toWorldWidth(49), toWorldHeight(2));
 		
 	var worldBody = world.CreateBody(bodyDef);
@@ -92,25 +91,23 @@ function testBox2d()
 	
 	bodyDef.type = b2Body.b2_dynamicBody;
 
-//	debug drawing
-	for(var i = 0; i < 10; ++i) {
-		if(Math.random() > 0.5) {
-			fixDef.shape = new b2PolygonShape;
-			fixDef.shape.SetAsBox(
-					Math.random() + 0.1 //half width
-					,  Math.random() + 0.1 //half height
-			);
-		} else {
-			fixDef.shape = new b2CircleShape(
-					Math.random() + 0.1 //radius
-			);
-		}
-		bodyDef.position.x = Math.random() * 25;
-		bodyDef.position.y = Math.random() * 10;
-		world.CreateBody(bodyDef).CreateFixture(fixDef);
-	}
-
-//	setup debug draw
+	//	debug drawing
+	fixDef.shape = new b2PolygonShape;
+	fixDef.shape.SetAsBox(
+			toWorldWidth(5),
+			toWorldHeight(5)
+	);
+	
+	bodyDef.position.x = Math.random() * 25;
+	bodyDef.position.y = Math.random() * 10;
+	
+	var objectBody = world.CreateBody(bodyDef);
+	
+	objectBody.CreateFixture(fixDef);
+	
+	objectBody.SetUserData(new InputController(objectBody));
+	
+	//	setup debug draw
 	var debugDraw = new b2DebugDraw();
 	debugDraw.SetSprite(document.getElementById("screen").getContext("2d"));
 	debugDraw.SetDrawScale(SCALE);
@@ -120,6 +117,19 @@ function testBox2d()
 	world.SetDebugDraw(debugDraw);
 
 	function update() {
+		
+		var body = world.GetBodyList();
+		
+		while (body != null)
+		{
+			if (body.GetUserData() != null)
+			{
+				body.GetUserData().update();
+			}
+			
+			body = body.GetNext();
+		}
+		
 		world.Step(
 				1 / 60   //frame-rate
 				,  10       //velocity iterations

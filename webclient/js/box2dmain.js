@@ -143,11 +143,11 @@ function testBox2d()
 
 	requestAnimFrame(update);
 }
-
-document.observe("dom:loaded", function() {
-	testBox2d();
-});
-
+//
+//document.observe("dom:loaded", function() {
+//	testBox2d();
+//});
+//
 
 
 	

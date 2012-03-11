@@ -10,7 +10,6 @@ var InputController = Class.create({
 	
 	update: function()
 	{
-		//this.inputMonitor
 		var vec = Box2D.Common.Math.b2Vec2;
 		
 		if (this.inputMonitor.topLock > 0)

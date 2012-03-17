@@ -22,8 +22,6 @@
 		
 		removeObject: function(object)
 		{
-			// TO DO: what a fuck this js, there is a need for simple linked list
-			// no need to copy hole shit every time when to remove something
 			this.objects = this.objects.without(object);
 		},
 		

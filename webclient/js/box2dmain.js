@@ -84,6 +84,16 @@ function testBox2d()
 
 	//	half width, half height.
 	fixDef.shape.SetAsBox(toWorldWidth(49), toWorldHeight(2));
+	
+	bodyDef.position.x = 0;
+	bodyDef.position.y = 0;
+	
+/*	fixDef.shape.SetAsArray([new b2Vec2(0, 0),
+	                         new b2Vec2(10, 0),
+	                         new b2Vec2(20, 20),
+	                         new b2Vec2(0, 10)]);*/
+	
+	fixDef.shape.SetAsEdge(new b2Vec2(0, 20), new b2Vec2(50, 20));
 		
 	var worldBody = world.CreateBody(bodyDef);
 	
@@ -143,11 +153,11 @@ function testBox2d()
 
 	requestAnimFrame(update);
 }
-//
-//document.observe("dom:loaded", function() {
-//	testBox2d();
-//});
-//
+
+document.observe("dom:loaded", function() {
+	testBox2d();
+});
+
 
 
 	

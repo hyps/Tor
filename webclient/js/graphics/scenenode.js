@@ -5,17 +5,14 @@
 		
 		initialize: function(sprite)
 		{
-			this.x = 0;
-			this.y = 0;
+			this.position = new Tor.Vec2d(0, 0);
 			this.angle = 0;
 			this.sprite = sprite;
 		},
 		
-		setPosition: function(x, y)
+		setPosition: function(position)
 		{
-			this.x = x;
-			
-			this.y = y;
+			this.position = position;
 		},
 		
 		setRotation: function(angle)
@@ -25,7 +22,7 @@
 		
 		render: function(canvas)
 		{
-			canvas.translate(this.x, this.y);
+			canvas.translate(this.position.x, this.position.y);
 			
 			canvas.rotate(this.angle);
 			

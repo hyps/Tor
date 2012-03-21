@@ -16,7 +16,7 @@
 			
 			this.height = height;
 			
-			resizeEvent.fire(width, height);
+			this.resizeEvent.fire(width, height);
 		}
 	});
 })(window.Tor = window.Tor || {});

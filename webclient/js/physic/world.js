@@ -28,7 +28,7 @@
 	
 		setPosition: function(position)
 		{
-			this.b2Body.position = position;
+			this.b2Body.SetPosition(position);
 			
 			this.updateViewsPosition();
 		},

@@ -33,5 +33,6 @@ PhysicTests.prototype.testBasic = function()
 		world.update();
 	}
 	
-	assertEquals(new Tor.Vec2d(0, 0), sceneNode1.position);
+	assertEquals(new Tor.Vec2d(20, 20), sceneNode1.position);
+	assertEquals(new Tor.Vec2d(80, 80), sceneNode2.position);
 };

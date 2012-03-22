@@ -14,15 +14,19 @@ var InputController = Class.create({
 		
 		if (this.inputMonitor.topLock > 0)
 		{
-			this.body.ApplyImpulse(new vec(0, -30), this.body.GetWorldCenter());
+			this.body.applyImpulse(new vec(0, -1), this.body.getPosition());
 		}
 		if (this.inputMonitor.leftLock > 0)
 		{
-			this.body.ApplyImpulse(new vec(-30, 0), this.body.GetFixtureList().GetAABB().lowerBound);
+			this.body.applyImpulse(new vec(-1, 0), this.body.getAABB().lowerBound);
 		}
 		if (this.inputMonitor.rightLock > 0)
 		{
-			this.body.ApplyImpulse(new vec(30, 0), this.body.GetFixtureList().GetAABB().lowerBound);
+			this.body.applyImpulse(new vec(1, 0), this.body.getAABB().lowerBound);
+		}
+		if (this.inputMonitor.bottomLock > 0)
+		{
+			this.body.applyImpulse(new vec(0, 1), this.body.getPosition());
 		}
 	}
 	

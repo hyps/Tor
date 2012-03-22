@@ -43,7 +43,7 @@ SpriteTests.prototype.testCore = function()
 			assertEquals(dw, 20);
 			assertEquals(dh, 20);
 		}
-	}
+	};
 	
 	sprite.render(testCanvas);
 	
@@ -57,7 +57,7 @@ SpriteTests.prototype.testCore = function()
 		{
 			assertEquals(sx, 50);
 		}
-	}
+	};
 	
 	sprite.timer.elapsedValue = 1.5;
 	

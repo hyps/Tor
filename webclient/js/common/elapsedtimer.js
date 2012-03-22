@@ -10,7 +10,7 @@
 		
 		elapsed: function()
 		{
-			return new Date().getTime() - this.startTime.getTime();
+			return (new Date().getTime() - this.startTime.getTime())/1000;
 		},
 		
 		reset: function()

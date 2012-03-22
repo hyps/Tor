@@ -24,7 +24,7 @@ SceneTests.prototype.testCore = function()
 			render : function(){renderList.push(this.name);}
 	};
 	
-	var scene = new Tor.GraphicScene(testCanvas, testCanvas);
+	var scene = new Tor.Scene(testCanvas);
 	
 	scene.addObject(testObject1);
 	scene.addObject(testObject2);

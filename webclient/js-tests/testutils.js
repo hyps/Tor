@@ -1,4 +1,4 @@
-var testCanvas = 
+var testDocumentCanvas =
 {
 	translate: function(x, y)
 	{
@@ -18,5 +18,12 @@ var testCanvas =
 
 	save : function(){},
 	
-	restore : function() {} 
+	restore : function() {},
+	
+	getContext: function()
+	{
+		return this;
+	}
 };
+
+var testCanvas = new Tor.Canvas(testDocumentCanvas, testDocumentCanvas);

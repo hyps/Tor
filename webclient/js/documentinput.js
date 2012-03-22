@@ -11,7 +11,7 @@ var DocumentInput = Class.create({
 				this.topLock++;
 				break;
 
-			case 83:
+			case 40:
 				this.bottomLock++;
 				break;
 
@@ -31,7 +31,7 @@ var DocumentInput = Class.create({
 				this.topLock = 0;
 				break;
 
-			case 83:
+			case 40:
 				this.bottomLock = 0;
 				break;
 

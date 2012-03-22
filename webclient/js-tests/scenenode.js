@@ -14,7 +14,7 @@ SceneNodeTests.prototype.testCore = function()
 	testNode.setPosition(new Tor.Vec2d(10, 20));
 	testNode.setRotation(1.0);
 	
-	var scene = new Tor.GraphicScene(testCanvas, testCanvas);
+	var scene = new Tor.Scene(testCanvas);
 	
 	scene.addObject(testNode);
 		  	

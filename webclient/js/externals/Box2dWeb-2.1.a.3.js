@@ -5986,7 +5986,7 @@ Box2D.postDefs = [];
       if (this.m_debugDraw == null) {
          return;
       }
-      this.m_debugDraw.m_sprite.graphics.clear();
+      //this.m_debugDraw.m_sprite.graphics.clear();
       var flags = this.m_debugDraw.GetFlags();
       var i = 0;
       var b;

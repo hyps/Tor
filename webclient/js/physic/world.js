@@ -33,6 +33,16 @@
 			this.updateViewsPosition();
 		},
 		
+		applyImpulse: function(impulse, point)
+		{
+			this.b2Body.ApplyImpulse(impulse, point);
+		},
+		
+		getPosition: function()
+		{
+			return this.b2Body.GetWorldCenter();
+		},
+		
 		addView: function(view)
 		{
 			this.views.push(view);
@@ -54,6 +64,11 @@
 				
 				view.setRotation(this.b2Body.GetAngle());
 			}.bind(this));
+		},
+		
+		getAABB: function()
+		{
+			return this.b2Body.GetFixtureList().GetAABB();
 		}
 	});
 	
@@ -68,6 +83,17 @@
 					new Tor.Vec2d(0, 0)    //gravity
 					,  true             //allow sleep
 			);
+		},
+		
+		setupDebugDrawing: function(documentCanvas)
+		{
+			var debugDraw = new b2DebugDraw();
+			debugDraw.SetSprite(documentCanvas);
+			debugDraw.SetDrawScale(this.physicScale);
+			debugDraw.SetFillAlpha(0.3);
+			debugDraw.SetLineThickness(3.0);
+			debugDraw.SetFlags(b2DebugDraw.e_shapeBit | b2DebugDraw.e_jointBit);
+			this.world.SetDebugDraw(debugDraw);
 		},
 		
 		toGraphicCoords: function(physicCoords)
@@ -97,9 +123,12 @@
 					,  10    //position iterations
 			);
 			
-			this.world.DrawDebugData();
-			
 			this.world.ClearForces();
+		},
+		
+		drawDebugData: function()
+		{
+			this.world.DrawDebugData();
 		},
 		
 		addStaticEdges: function()

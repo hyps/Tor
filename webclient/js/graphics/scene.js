@@ -1,22 +1,21 @@
 
 (function(Tor)
 {
-	Tor.GraphicScene = Class.create({
+	Tor.Scene = Class.create({
 		
-		initialize: function(canvas, backbuffer, background)
+		initialize: function(canvas)
 		{
 			this.canvas = canvas;
-			this.backbuffer = backbuffer;
-			this.background = background;
+			
 			this.objects = [];
+			
 			this.zOrderDirty = false;
-			this.width = canvas.width;
-			this.height = canvas.height;
 		},
 		
 		addObject: function(object)
 		{
 			this.objects.push(object);
+			
 			this.zOrderDirty = true;
 		},
 		
@@ -37,18 +36,18 @@
 				this.zOrderDirty = false;
 			}
 			
-			this.backbuffer.drawImage(this.background, 0, 0, this.width, this.height);
+			this.canvas.beginScene();
 				
 			this.objects.each(function(item)
 			{
-			    this.backbuffer.save();
+			    this.canvas.getBuffer().save();
 				
-				item.render(this.backbuffer);
+				item.render(this.canvas.getBuffer());
 				
-				this.backbuffer.restore();
+				this.canvas.getBuffer().restore();
 			}.bind(this));
 			
-			this.canvas.drawImage(this.backbuffer, 0, 0);
+			this.canvas.endScene();
 		}
 	});
 })(window.Tor = window.Tor || {});

@@ -105,6 +105,12 @@
 
 		update: function()
 		{
+			this.world.Step(
+					1 / 60   //frame-rate
+					,  10    //velocity iterations
+					,  10    //position iterations
+			);
+			
 			var body = this.world.GetBodyList();
 			
 			while (body != null)
@@ -116,12 +122,6 @@
 				
 				body = body.GetNext();
 			}
-			
-			this.world.Step(
-					1 / 60   //frame-rate
-					,  10    //velocity iterations
-					,  10    //position iterations
-			);
 			
 			this.world.ClearForces();
 		},
